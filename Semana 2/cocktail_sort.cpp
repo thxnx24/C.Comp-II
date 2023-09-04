@@ -14,7 +14,6 @@ void cocktail_sort(int* ini, int* fin)
 	while (verifica) 
 	{
 		verifica = false;
-
 		for (int *ptr = ini; ptr < fin; ++ptr)
 		{
 			if (*ptr > *(ptr + 1))
@@ -37,9 +36,7 @@ void cocktail_sort(int* ini, int* fin)
 
 			}
 		}
-
 		ini++;
-
 	}
 }
 
