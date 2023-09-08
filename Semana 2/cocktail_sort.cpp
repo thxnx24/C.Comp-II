@@ -22,18 +22,14 @@ void cocktail_sort(int* ini, int* fin)
 				verifica = true;
 			}
 		}
-
 		if (!verifica) break;
-		
 		fin--;
-
 		for (int* ptr = fin; ptr > ini; --ptr)
 		{
 			if (*ptr < *(ptr - 1)) 
 			{
 				swap(ptr, ptr - 1);
 				verifica = true;
-
 			}
 		}
 		ini++;
