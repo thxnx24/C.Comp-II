@@ -8,7 +8,6 @@ void ordenar(int *ini, int *mid)
         int *fin = mid + (mid - ini);
         if (*ini > *mid) {
             int temp = *mid;
-            // Desplazar los elementos en la primera parte hacia la derecha
             for (int *p = mid; p > ini; --p) {
                 *p = *(p - 1);
             }
