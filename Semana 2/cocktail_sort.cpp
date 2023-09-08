@@ -47,4 +47,5 @@ int main()
 	{
 		cout << array[i] << " ";
 	}
+	return 0;
 }
