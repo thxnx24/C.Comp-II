@@ -18,11 +18,11 @@ void ordenar(int *ini, int *mid)
 }
 
 int main() {
-    int A[] = {0, 2, 4, 6, 8, 1, 3, 5, 7, 9};
+    int A[] = {0, 2, 4, 6, 8, 10, 1, 3, 5, 7, 9,11};
     int n = sizeof(A) / sizeof(A[0]);
 
-    int *ini = &A[0];
-    int *mid = &A[5];
+    int *ini = A;
+    int *mid = A+(n/2);
 
     cout << "Array desordenado:" << endl;
     for (int i = 0; i < n; i++) {
