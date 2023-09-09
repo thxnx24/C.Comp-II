@@ -5,7 +5,6 @@ void ordenar(int *ini, int *mid)
 {
     int *fin = mid + (mid - ini);
     while (ini < mid && mid < fin) {
-        int *fin = mid + (mid - ini);
         if (*ini > *mid) {
             int temp = *mid;
             for (int *p = mid; p > ini; --p) {

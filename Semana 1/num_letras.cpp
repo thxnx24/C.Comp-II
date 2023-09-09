@@ -1,7 +1,6 @@
 #include <string>
 #include <iostream>
 
-
 using namespace std;
 
 string unidades[] = {"cero", "uno", "dos", "tres", "cuatro", "cinco",
@@ -38,9 +37,19 @@ string convertirNumero(int num)
         int cent = num / 100;
         int resto = num % 100;
         if (resto == 0)
-            return centenas[cent - 1];
+        {
+            if (cent == 1)
+                return "cien";
+            else
+                return centenas[cent - 1];
+        }
         else
-            return centenas[cent - 1] + " " + convertirNumero(resto);
+        {
+            if (cent == 1)
+                return "ciento " + convertirNumero(resto);
+            else
+                return centenas[cent - 1] + " " + convertirNumero(resto);
+        }
     }
     else if (num < 1000000)
     {

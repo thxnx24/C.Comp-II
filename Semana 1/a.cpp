@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 
+
 using namespace std;
 
 string unidades[] = {"cero", "uno", "dos", "tres", "cuatro", "cinco",
@@ -65,6 +66,5 @@ int main()
     cin >> num;
 
     cout << convertirNumero(num) << endl;
-
     return 0;
 }
