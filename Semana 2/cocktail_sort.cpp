@@ -24,6 +24,7 @@ void cocktail_sort(int* ini, int* fin)
 		}
 		if (!verifica) break;
 		fin--;
+		verifica = false;
 		for (int* ptr = fin; ptr > ini; --ptr)
 		{
 			if (*ptr < *(ptr - 1)) 
@@ -41,6 +42,13 @@ int main()
 	int array[] = { 1,9,2,8,3,7,4,6,5,0 };
 	int n = sizeof(array) / sizeof(array[0]);
 
+	cout << "Array desordenado" << endl;
+	for (int i = 0; i < n; i++)
+	{
+		cout << array[i] << " ";
+	}
+
+	cout << "\nArray ordenado" << endl;
 	cocktail_sort(array, array + n - 1);
 	
 	for (int i = 0; i < n; i++)
