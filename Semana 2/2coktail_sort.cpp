@@ -2,7 +2,13 @@
 using namespace std;
 
 void coktail(int *ini,int *fin ){
-    while(ini<fin){
+    bool verifica = true;
+
+    int a = 0;
+    while(ini<fin && verifica){
+        verifica = false;
+        a++;
+        cout << "-> " << a << endl;
         for(int *brbja=ini;brbja<fin; brbja++){
             if(*brbja>*(brbja+1)){
                 int temp=*(brbja+1);
@@ -10,9 +16,15 @@ void coktail(int *ini,int *fin ){
                 brbja++;
                 *(brbja-1)=temp;
                 brbja--;
+                verifica = true;
             }
         }
         fin--;
+        if (!verifica)
+            break;
+            verifica = false;
+
+        cout << " <- " << a << endl;
         for(int *brbja=fin; brbja>ini;brbja--){
             if(*brbja<*(brbja-1)){
                 int temp=*(brbja-1);
@@ -20,6 +32,7 @@ void coktail(int *ini,int *fin ){
                 brbja--;
                 *(brbja+1)=temp;
                 brbja++;
+                verifica = true;
             }
         }
         ini++;
@@ -29,7 +42,7 @@ void coktail(int *ini,int *fin ){
 
 
 int main(){
-    int a[10]={1,2,3,4,5,6,7,8,9,10};
+    int a[10]={10,9,3,4,15,5,7,8,9,10};
     coktail(&a[0],&a[9]);
     for(int i = 0; i <= 9; ++i){
         cout << a[i] << " ";
