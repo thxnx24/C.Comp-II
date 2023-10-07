@@ -1,5 +1,6 @@
-#include <iostream>
+//Puntertos tipados y no tipados
 
+#include <iostream>
 using namespace std;
 
 int main() {
