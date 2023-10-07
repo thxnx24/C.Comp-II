@@ -1,5 +1,6 @@
-#include <iostream>
+//ecorrido punteros y array
 
+#include <iostream>
 using namespace std;
 
 void print1(int A[], int tam)
