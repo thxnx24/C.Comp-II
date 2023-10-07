@@ -35,5 +35,6 @@ int main() {
   cout<<"Ordenado"<<endl;
   for(int *p = A; p < A+10; p++)
      cout<< *p <<endl;
-  
+
+  return 0; 
 }
