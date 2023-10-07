@@ -27,4 +27,6 @@ int main() {
   print1(A,10);
   cout<<endl;
   print2(A,10);
+
+  return 0;
 }
