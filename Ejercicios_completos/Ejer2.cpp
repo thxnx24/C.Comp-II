@@ -1,5 +1,6 @@
-#include <iostream>
+//Punteros y arrays
 
+#include <iostream>
 using namespace std;
 
 void func(int A[5])
