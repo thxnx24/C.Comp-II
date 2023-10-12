@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 void fibonacci(long *ArrEnt, int ArrTam) {
     if (ArrTam <= 2) {
         return;  // No se pueden generar más números si ya tienes los primeros dos.
@@ -17,11 +19,11 @@ void fibonacci(long *ArrEnt, int ArrTam) {
 
 int main() {
     int n;
-    std::cout << "Ingrese el número de términos de la sucesión de Fibonacci: ";
-    std::cin >> n;
+    cout << "Ingrese el número de términos de la sucesión de Fibonacci: ";
+    cin >> n;
 
     if (n < 2) {
-        std::cout << "Se necesitan al menos 2 términos para generar la sucesión." << std::endl;
+        cout << "Se necesitan al menos 2 términos para generar la sucesión." << endl;
         return 1;
     }
 
@@ -34,7 +36,7 @@ int main() {
 
     // Imprimir la sucesión de Fibonacci.
     for (int i = 0; i < n; i++) {
-        std::cout << ArrEnt[i] << " ";
+        cout << ArrEnt[i] << " ";
     }
 
     delete[] ArrEnt;  // Liberar la memoria asignada dinámicamente.
