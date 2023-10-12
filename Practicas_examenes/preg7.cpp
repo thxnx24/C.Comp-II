@@ -26,16 +26,16 @@ int main() {
     int *par = A+(n/2);
 
     cout << "Array desordenado:" << endl;
-    for (int i = 0; i < n; i++) {
-        cout << A[i] << " ";
+    for (int *i = A; i < A+n; i++) {
+        cout << *i << " ";
     }
     cout << endl;
 
     merge(impar, par);
 
     cout << "Array ordenado:" << endl;
-    for (int i = 0; i < n; i++) {
-        cout << A[i] << " ";
+    for (int *i = A; i < A+n; i++) {
+        cout << *i << " ";
     }
     cout << endl;
 
