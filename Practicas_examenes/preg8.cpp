@@ -38,10 +38,9 @@ int main() {
     fibonacci(ArrEnt, n);  // Llamada a la función para generar el resto de la sucesión.
 
     // Imprimir la sucesión de Fibonacci.
-    for (int i = 0; i < n; i++) {
-        cout << ArrEnt[i] << " ";
+    for(long *p = ArrEnt; p < ArrEnt+n; p++){
+        cout<< *p << " ";
     }
-
     delete[] ArrEnt;  // Liberar la memoria asignada dinámicamente.
 
     return 0;
