@@ -25,7 +25,8 @@ int main() {
         return 1;
     }
 
-    long ArrEnt[n]; 
+    long *ArrEnt = new long[n];  // Asignación dinámica de memoria.
+
     ArrEnt[0] = 0;
     ArrEnt[1] = 1;
 
@@ -35,6 +36,8 @@ int main() {
     for (int i = 0; i < n; i++) {
         std::cout << ArrEnt[i] << " ";
     }
+
+    delete[] ArrEnt;  // Liberar la memoria asignada dinámicamente.
 
     return 0;
 }
