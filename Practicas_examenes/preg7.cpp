@@ -19,7 +19,7 @@ void merge(int *impar, int *par)
 }
 
 int main() {
-    int A[] = {1, 3, 5, 7, 9, 11, 0, 2, 4, 6, 8, 10, };
+    int A[] = {1, 3, 5, 7, 9, 11, 0, 2, 4, 6, 8, 10};
     int n = sizeof(A) / sizeof(A[0]);
 
     int *impar = A;
