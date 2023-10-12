@@ -7,12 +7,17 @@ void fibonacci(long *ArrEnt, int ArrTam) {
     }
 
     long *ptr = ArrEnt + 2;  // Apuntar al tercer elemento del array.
+    long *end = ArrEnt + ArrTam;  // Puntero al final del array.
+
+    long *prev1 = ArrEnt + 1;  // Apuntar al segundo elemento del array.
+    long *prev2 = ArrEnt;  // Apuntar al primer elemento del array.
 
     // Generamos el resto de la sucesión utilizando aritmética de punteros.
-    for (int i = 2; i < ArrTam; i++) {
-        long next = *(ptr - 2) + *(ptr - 1);
-        *ptr = next;
+    while (ptr < end) {
+        *ptr = *prev2 + *prev1;
         ptr++;
+        prev1++;
+        prev2++;
     }
 }
 

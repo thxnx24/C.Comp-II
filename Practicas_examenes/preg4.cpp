@@ -5,7 +5,7 @@ c) Imprime H u g o P a c o L u i s
 d) Imprime Hugo ugo go o Paco aco co o Luis uis is s
 e) La ejecución puede dar resultados inesperados
 
-Rota.- 
+Rpta.- H u g o  P a c o  L u i s
 */
 
 #include <iostream>
