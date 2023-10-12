@@ -32,7 +32,6 @@ int main() {
     }
 
     long *ArrEnt = new long[n];  // Asignación dinámica de memoria.
-
     ArrEnt[0] = 0;
     ArrEnt[1] = 1;
 
