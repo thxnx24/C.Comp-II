@@ -22,6 +22,7 @@ struct pila
     bool POP (T &valor);
     bool Empty ();
     ~pila();
+    void print();
 };
 
 template < class T >
@@ -62,6 +63,17 @@ pila <T>::~pila()
         TOP = TOP -> next;
         delete tmp;
     }
+}
+
+template < class T >
+void pila < T >::print()
+{
+    cout << "TOP ->";
+    for (nodo < T > *p = TOP; p; p = p -> next)
+    {
+        cout << p -> valor << " -> ";
+    }
+    cout << "NULL\n";
 }
 
 int main()
