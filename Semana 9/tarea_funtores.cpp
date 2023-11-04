@@ -3,10 +3,24 @@
 #include <iostream>
 using namespace std;
 
+LE <int> lista;
+
+template <class T>
+struct asc
+{
+    
+};
+
+template <class T>
+struct des
+{
+
+};
 
 
 
 int main()
 {
+    LE<int 
     return 0;
 }
