@@ -1,4 +1,4 @@
-//Cola 
+//Merch lista enlazada
 
 #include <iostream>
 #include <string>
