@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-LE <int> lista;
+//LE <int> lista;
 
 template <class T>
 struct asc
@@ -21,6 +21,6 @@ struct des
 
 int main()
 {
-    LE<int 
+    
     return 0;
 }
