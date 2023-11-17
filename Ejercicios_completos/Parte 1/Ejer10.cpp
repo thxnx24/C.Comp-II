@@ -15,7 +15,6 @@ void crazy(char (*p)[5], int tam)
       *fin = tmp;
     }
   }
-
 }
 
 int main() {
@@ -28,5 +27,4 @@ int main() {
   cout<<"---------------"<<endl;
   for(char (*p)[5] = A; p < A+3; p++)
       cout<<*p<<endl;
-
 }
