@@ -56,7 +56,7 @@ void split(nodo<T>*& h1, nodo<T>*& h2, elige cumple)
     }
 }
 
-int main() {
+int main(){
     
     nodo<int>* h1 = new nodo<int>(1);
     h1->next = new nodo<int>(2);
@@ -73,24 +73,23 @@ int main() {
     h1->next->next->next->next->next->next->next->next->next->next->next->next = new nodo<int>(75);
     h1->next->next->next->next->next->next->next->next->next->next->next->next->next = new nodo<int>(34);
 
-    nodo<int>* h2 = nullptr;  // Empty list for numbers not satisfying the elige
+    nodo<int>* h2 = nullptr;
 
     cout << "Elige: \n1. Par\n2. Impar\n";
     int choice;
     cin >> choice;
 
     if (choice == 1) {
-        par<int> elige;  // Functor for checking if a number is even
+        par<int> elige;  
         split(h1, h2, elige);
     } else if (choice == 2) {
-        impar<int> elige;  // Functor for checking if a number is odd
+        impar<int> elige;
         split(h1, h2, elige);
     } else {
         cout << "Elección inválida.\n";
         return 1;
     }
-
-    // Print the contents of H1
+    
     nodo<int>* current = h1;
     while (current != nullptr) {
         cout << current->data << " ";
@@ -99,7 +98,6 @@ int main() {
 
     cout << endl;
 
-    // Print the contents of H2
     current = h2;
     while (current != nullptr) {
         cout << current->data << " ";
