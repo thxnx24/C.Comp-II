@@ -1,108 +1,73 @@
 #include <iostream>
 
-template <class T>
-struct nodo {
-    T data;
-    nodo* next;
+// Definición de la clase Node
+class Node {
+public:
+    int data;
+    Node* next;
+    Node* prev;
 
-    // Constructor
-    nodo(const T& value) : data(value), next(nullptr) {}
+    Node(int value) : data(value), next(nullptr), prev(nullptr) {}
 };
 
-template <class T>
-struct par {
-    bool operator()(const T& value) const {
-        return value % 2 == 0;
-    }
-};
+// Definición de la clase LinkedList
+class LinkedList {
+private:
+    Node* head;
+    Node* tail;
 
-template <class T>
-struct impar {
-    bool operator()(const T& value) const {
-        return value % 2 != 0;
-    }
-};
+public:
+    LinkedList() : head(nullptr), tail(nullptr) {}
 
-template <class T, class Predicate>
-void split(nodo<T>*& h1, nodo<T>*& h2, Predicate cumple)
-{
-    // Traverse the original list
-    nodo<T>* current = h1;
-    nodo<T>* prev = nullptr;
+    // Método para agregar un nodo al final de la lista
+    void append(int value) {
+        Node* newNode = new Node(value);
 
-    while (current != nullptr) {
-        // Check the predicate
-        if (cumple(current->data)) {
-            // Move to the next node in the original list
-            prev = current;
-            current = current->next;
+        if (!head) {
+            // Si la lista está vacía, el nuevo nodo será tanto la cabeza como la cola
+            head = tail = newNode;
         } else {
-            // Move the node to the second list (H2)
-            if (prev == nullptr) {
-                h1 = current->next;
-            } else {
-                prev->next = current->next;
-            }
-
-            // Insert the node at the beginning of the second list (H2)
-            current->next = h2;
-            h2 = current;
-
-            // Move to the next node in the original list
-            current = (prev == nullptr) ? h1 : prev->next;
+            // Agregar el nuevo nodo al final de la lista
+            tail->next = newNode;
+            newNode->prev = tail;
+            tail = newNode;
         }
     }
-}
+
+    // Método para imprimir la lista en orden
+    void printForward() {
+        Node* current = head;
+        while (current) {
+            std::cout << current->data << " ";
+            current = current->next;
+        }
+        std::cout << std::endl;
+    }
+
+    // Método para imprimir la lista en orden inverso
+    void printBackward() {
+        Node* current = tail;
+        while (current) {
+            std::cout << current->data << " ";
+            current = current->prev;
+        }
+        std::cout << std::endl;
+    }
+};
 
 int main() {
-    
-    nodo<int>* h1 = new nodo<int>(1);
-    h1->next = new nodo<int>(2);
-    h1->next->next = new nodo<int>(3);
-    h1->next->next->next = new nodo<int>(4);
-    h1->next->next->next->next = new nodo<int>(5);
-    h1->next->next->next->next->next = new nodo<int>(6);
-    h1->next->next->next->next->next->next = new nodo<int>(7);
-    h1->next->next->next->next->next->next->next = new nodo<int>(8);
-    h1->next->next->next->next->next->next->next->next = new nodo<int>(9);
-    h1->next->next->next->next->next->next->next->next->next = new nodo<int>(81);
-    h1->next->next->next->next->next->next->next->next->next->next = new nodo<int>(82);
-    h1->next->next->next->next->next->next->next->next->next->next->next = new nodo<int>(58);
-    h1->next->next->next->next->next->next->next->next->next->next->next->next = new nodo<int>(75);
-    h1->next->next->next->next->next->next->next->next->next->next->next->next->next = new nodo<int>(34);
+    // Crear una lista doblemente enlazada e insertar algunos elementos
+    LinkedList myLinkedList;
+    myLinkedList.append(1);
+    myLinkedList.append(2);
+    myLinkedList.append(3);
 
-    nodo<int>* h2 = nullptr;  // Empty list for numbers not satisfying the predicate
+    // Imprimir la lista en orden y en orden inverso
+    std::cout << "Lista en orden: ";
+    myLinkedList.printForward();
 
-    std::cout << "Choose predicate:\n1. Par\n2. Impar\n";
-    int choice;
-    std::cin >> choice;
-
-    if (choice == 1) {
-        par<int> predicate;  // Functor for checking if a number is even
-        split(h1, h2, predicate);
-    } else if (choice == 2) {
-        impar<int> predicate;  // Functor for checking if a number is odd
-        split(h1, h2, predicate);
-    } else {
-        std::cout << "Invalid choice.\n";
-        return 1;
-    }
-
-    // Print the contents of H1
-    nodo<int>* current = h1;
-    while (current != nullptr) {
-        std::cout << current->data << " ";
-        current = current->next;
-    }
-
-    std::cout << std::endl;
-
-    // Print the contents of H2
-    current = h2;
-    while (current != nullptr) {
-        std::cout << current->data << " ";
-        current = current->next;
-    }
+    std::cout << "Lista en orden inverso: ";
+    myLinkedList.printBackward();
 
     return 0;
 }
