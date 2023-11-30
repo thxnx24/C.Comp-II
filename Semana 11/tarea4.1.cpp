@@ -92,6 +92,10 @@ public:
             current->next->prev = current->prev;
             delete current;
             current = temp;
+
+            // Imprimir la lista después de cada eliminación
+            cout << "Lista actual: ";
+            imprime();
         }
 
         // Imprimir y eliminar el último nodo
@@ -127,13 +131,13 @@ int main() {
     lista_asc.insertar(4);
     lista_asc.insertar(7);
 
-    cout << "Lista ascendente antes de ordenar: ";
+    cout << "Lista: ";
     lista_asc.imprime();
-
+    
     // Uso del método de Josephus en la lista ascendente
-    cout << "\nEliminación Josephus en la lista ascendente:" << endl;
+    cout << "\nEliminación Josephus " << endl;
     lista_asc.josephus(2);  // Se elimina cada segundo elemento
-
+    /*
     Lista_doble_enlazada<int, des> lista_des;
     lista_des.insertar(5);
     lista_des.insertar(2);
@@ -142,13 +146,14 @@ int main() {
     lista_des.insertar(3);
     lista_des.insertar(4);
     lista_des.insertar(7);
-
+    
+    
     cout << "\nLista descendente antes de ordenar: ";
     lista_des.imprime();
-
+    
     // Uso del método de Josephus en la lista descendente
     cout << "\nEliminación Josephus en la lista descendente:" << endl;
     lista_des.josephus(3);  // Se elimina cada tercer elemento
-
+    */
     return 0;
 }

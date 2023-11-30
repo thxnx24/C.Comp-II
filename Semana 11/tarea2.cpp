@@ -1,122 +1,130 @@
 #include <iostream>
-using namespace std;
 
-template <typename T, typename Functor>
-class Nodo {
-public:
+// Nodo de la lista enlazada
+template <typename T>
+struct Node {
     T data;
-    Nodo<T, Functor>* next;
-    Nodo<T, Functor>* prev;
+    Node* next;
 
-    Nodo(T value) : data(value), next(nullptr), prev(nullptr) {}
+    Node(const T& value) : data(value), next(nullptr) {}
 };
 
-template <typename T, typename Functor>
-class Lista_doble_enlazada {
-    private:
-        Nodo<T, Functor>* head;
-    public:
-        Lista_doble_enlazada() : head(nullptr) {}
-        
-        void insertar(T value) {
-            Nodo<T, Functor>* newNodo = new Nodo<T, Functor>(value);
-            if (!head) {
-                head = newNodo;
-                head->next = head;
-                head->prev = head;
-            } else {
-                Nodo<T, Functor>* last = head->prev;
-                newNodo->next = head;
-                newNodo->prev = last;
-                head->prev = newNodo;
-                last->next = newNodo;
+// Lista enlazada circular
+template <typename T, typename Compare>
+class Lista_circular {
+private:
+    Node<T>* head;
+
+public:
+    Lista_circular() : head(nullptr) {}
+    // insertarar un elemento en la lista
+    void insertar(const T& value) {
+        Node<T>* newNode = new Node<T>(value);
+        if (!head) {
+            head = newNode;
+            newNode->next = head;
+        } else {
+            Node<T>* temp = head;
+            while (temp->next != head) {
+                temp = temp->next;
             }
+            temp->next = newNode;
+            newNode->next = head;
         }
-        void imprime() const {
-            if (!head) {
-                cout << "La lista está vacía." << endl;
-                return;
-            }
-            Nodo<T, Functor>* current = head;
+    }
+
+    void print() const {
+        if (!head) {
+            std::cout << "Lista vacía." << std::endl;
+            return;
+        }
+
+        Node<T>* temp = head;
+        do {
+            std::cout << temp->data << " ";
+            temp = temp->next;
+        } while (temp != head);
+        std::cout << std::endl;
+    }
+
+    // Ordenar la lista utilizando un functor
+    void find(Compare comparator) {
+        if (!head || !head->next) {
+            // La lista está vacía o tiene un solo elemento, ya está ordenada
+            return;
+        }
+        Node<T>* current = head;
+        Node<T>* nextNode = head->next;
+        do {
+            Node<T>* innerCurrent = head;
             do {
-                cout << current->data << " ";
-                current = current->next;
-            } while (current != head);
-            cout << endl;
-        }
-        void find() {
-            if (!head) {
-                return;
-            }
-            Nodo<T, Functor>* current = head;
-            Nodo<T, Functor>* index = nullptr;
-            T temp;
-            do {
-                index = current->next;
-                do {
-                    if (Functor()(index->data, current->data)) {
-                        temp = current->data;
-                        current->data = index->data;
-                        index->data = temp;
-                    }
+                if (comparator(innerCurrent->data, nextNode->data)) {
+                    // Intercambiar los valores
+                    T temp = innerCurrent->data;
+                    innerCurrent->data = nextNode->data;
+                    nextNode->data = temp;
+                }
 
-                    index = index->next;
-                } while (index != head);
+                innerCurrent = innerCurrent->next;
+            } while (innerCurrent != head);
 
-                current = current->next;
-            }
-            while (current != head && current->next != head);
-        }
-};
+            current = current->next;
+            nextNode = current->next;
 
-struct asc {
-    template <typename T>
-    bool operator()(const T& a, const T& b) const {
-        return a < b;
+        } while (nextNode != head);
     }
 };
 
-struct des {
-    template <typename T>
+template <typename T>
+struct asc {
     bool operator()(const T& a, const T& b) const {
-        return a > b;
+        return a > b; 
+    }
+};
+
+
+template <typename T>
+struct des {
+    bool operator()(const T& a, const T& b) const {
+        return a < b; 
     }
 };
 
 int main() {
-    Lista_doble_enlazada<int, asc> lista_asc;
+
+    Lista_circular<int, asc<int>> lista_asc;
     lista_asc.insertar(5);
     lista_asc.insertar(2);
     lista_asc.insertar(8);
     lista_asc.insertar(1);
-    lista_asc.insertar(3);
     lista_asc.insertar(4);
     lista_asc.insertar(7);
+    lista_asc.insertar(6);
+    lista_asc.insertar(9);
 
-    cout << "Lista ascendente antes de ordenar: ";
-    lista_asc.imprime();
+    std::cout << "Lista desordenada  ";
+    lista_asc.print();
 
-    lista_asc.find();
+    lista_asc.find(asc<int>());
+    std::cout << "Lista ordenada ascendente: ";
+    lista_asc.print();
 
-    cout << "Lista ascendente después de ordenar: ";
-    lista_asc.imprime();
-
-    Lista_doble_enlazada<int, des> lista_des;
+    Lista_circular<int, des<int>> lista_des;
     lista_des.insertar(5);
     lista_des.insertar(2);
     lista_des.insertar(8);
     lista_des.insertar(1);
-    lista_des.insertar(3);
     lista_des.insertar(4);
     lista_des.insertar(7);
+    lista_des.insertar(6);
+    lista_des.insertar(9);
 
-    cout << "\nLista descendente antes de ordenar: ";
-    lista_des.imprime();
+    std::cout << "Lista desordenada";
+    lista_des.print();
 
-    lista_des.find();
-
-    cout << "Lista descendente después de ordenar: ";
-    lista_des.imprime();
+    lista_des.find(des<int>());
+    std::cout << "Lista ordenada descendente: ";
+    lista_des.print();
 
     return 0;
 }

@@ -44,6 +44,20 @@ class Lista_doble_enlazada {
             } while (current != head);
             cout << endl;
         }
+
+        void imprimeInverso() const {
+        if (!head) {
+            cout << "La lista está vacía." << endl;
+            return;
+        }
+        Nodo<T, Functor>* current = head->prev;
+        do {
+            cout << current->data << " ";
+            current = current->prev;
+        } while (current != head->prev);
+        cout << endl;
+    }   
+
         void find() {
             if (!head) {
                 return;
@@ -93,13 +107,17 @@ int main() {
     lista_asc.insertar(4);
     lista_asc.insertar(7);
 
-    cout << "Lista ascendente antes de ordenar: ";
+    cout << "Lista en orden: ";
     lista_asc.imprime();
+
+    cout << "Lista en orden inverso: ";
+    lista_asc.imprimeInverso();
 
     lista_asc.find();
 
-    cout << "Lista ascendente después de ordenar: ";
+    cout << "Lista ascendente:  ";
     lista_asc.imprime();
+
 
     Lista_doble_enlazada<int, des> lista_des;
     lista_des.insertar(5);
@@ -112,6 +130,9 @@ int main() {
 
     cout << "\nLista descendente antes de ordenar: ";
     lista_des.imprime();
+
+    cout << "Lista en orden inverso: ";
+    lista_des.imprimeInverso();
 
     lista_des.find();
 
