@@ -134,6 +134,8 @@ int main() {
     cout << "\nEliminación Josephus en la lista ascendente:" << endl;
     lista_asc.josephus(2);  // Se elimina cada segundo elemento
 
+    lista_asc.imprime();
+
     Lista_doble_enlazada<int, des> lista_des;
     lista_des.insertar(5);
     lista_des.insertar(2);
@@ -149,6 +151,8 @@ int main() {
     // Uso del método de Josephus en la lista descendente
     cout << "\nEliminación Josephus en la lista descendente:" << endl;
     lista_des.josephus(3);  // Se elimina cada tercer elemento
+
+    lista_des.imprime();
 
     return 0;
 }
