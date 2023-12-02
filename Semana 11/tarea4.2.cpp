@@ -150,11 +150,12 @@ int main() {
 
     cout << "Lista: ";
     lista_asc.imprime();
-    
+    /*
     cout << "Ascendente: ";
     lista_asc.find();
-
+    
     lista_asc.imprime();
+    */
     
     cout << "\nEliminación Josephus " << endl;
     lista_asc.josephus(2);
