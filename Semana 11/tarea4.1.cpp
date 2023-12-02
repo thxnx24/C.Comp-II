@@ -65,6 +65,30 @@ public:
         cout << endl;
     }
 
+    void find() {
+            if (!head) {
+                return;
+            }
+            Nodo<T, Functor>* current = head;
+            Nodo<T, Functor>* index = nullptr;
+            T temp;
+            do {
+                index = current->next;
+                do {
+                    if (Functor()(index->data, current->data)) {
+                        temp = current->data;
+                        current->data = index->data;
+                        index->data = temp;
+                    }
+
+                    index = index->next;
+                } while (index != head);
+
+                current = current->next;
+            }
+            while (current != head && current->next != head);
+        }
+    
     // Método de Josephus
     void josephus(int paso) {
         if (!head || size() == 1) {
@@ -134,9 +158,14 @@ int main() {
     cout << "Lista: ";
     lista_asc.imprime();
     
-    // Uso del método de Josephus en la lista ascendente
+    cout << "Ascendente: ";
+    lista_asc.find();
+
+    lista_asc.imprime();
+    
     cout << "\nEliminación Josephus " << endl;
     lista_asc.josephus(2);  // Se elimina cada segundo elemento
+    lista_asc.imprime();
     /*
     Lista_doble_enlazada<int, des> lista_des;
     lista_des.insertar(5);
