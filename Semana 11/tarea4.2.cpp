@@ -111,6 +111,7 @@ public:
             }
             delete current;
             current = temp;
+
             cout << "Lista actual: ";
             imprime();
         }
